@@ -91,14 +91,16 @@ const declineHandler = () => {
       <form>
         <fieldset class="border ">
           <legend>What do you prefer to drink?</legend>
-          <div v-if="alcohol==='non' && count < 2" class="text-red-500">Are you sure??? 😱😱😱</div>
-          <div v-if="count === 2 && wasNonAlco" class="text-red-500">Not again please 😭🥺😵‍💫</div>
-          <div v-if="count > 2 && wasNonAlco" class="text-red-500">Ohh, come on... 🥺👉👈</div>
-          <div v-if="count === 1 && !wasNonAlco" class="text-green-500">Phew 😮‍💨🫡💪</div>
-          <div v-if="count === 2 && !wasNonAlco" class="text-green-500">I though were you serious 😮‍💨😓😰 </div>
-          <div v-if="count > 2 && !wasNonAlco" class="text-green-500">I almost believed you 😂🤣🤪😁</div>
+          <div class="absolute pointer-events-none w-full">
+            <div v-if="alcohol==='non' && count < 2" class="text-red-500">Are you sure??? 😱😱😱</div>
+            <div v-if="count === 2 && wasNonAlco" class="text-red-500">Not again please 😭🥺😵‍💫</div>
+            <div v-if="count > 2 && wasNonAlco" class="text-red-500">Ohh, come on... 🥺👉👈</div>
+            <div v-if="count === 1 && !wasNonAlco" class="text-green-500">Phew 😮‍💨🫡💪</div>
+            <div v-if="count === 2 && !wasNonAlco" class="text-green-500">I though were you serious 😮‍💨😓😰 </div>
+            <div v-if="count > 2 && !wasNonAlco" class="text-green-500">I almost believed you 😂🤣🤪😁</div>
+          </div>
 
-          <div class="flex justify-around p-1">
+          <div class="flex justify-around flex-col items-start py-1 px-5">
             <div class="flex ">
               <input type="radio" id="wine" name="alcohol" value="wine" :checked="alcohol==='wine'" v-model="alcohol" />
               <label for="wine">Wine 🍷</label>
@@ -136,7 +138,7 @@ const declineHandler = () => {
     <div v-if="time === 'later'" class="text-green-500 text-2xl font-extrabold absolute top-0 right-0">😱</div>
 
     <form>
-      <fieldset class="border flex justify-around p-1 ">
+      <fieldset class="border flex justify-around flex-col items-start py-1 px-5 ">
         <legend>I will </legend>
 
         <div class="flex gap-1">
