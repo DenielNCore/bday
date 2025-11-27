@@ -5,6 +5,18 @@ export default defineNuxtConfig({
   
   // Disable SSR - SPA mode
   ssr: false,
+
+  app: {
+    baseURL: '/bday/',
+    head: {
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&display=swap'
+        }
+      ]
+    }
+  },
   
   // TypeScript configuration
   typescript: {
