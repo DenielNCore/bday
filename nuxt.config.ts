@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ssr: false,
 
   app: {
-    baseURL: '/bday/',
+    baseURL: '/',
     head: {
       link: [
         {
