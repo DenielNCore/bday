@@ -127,10 +127,10 @@ const changeYourMindHandler = () => {
         <div v-if="status==='accepted'" class="text-center hand-drawn-border bg-pink-50 p-5 mt-10">
           <p class="text-2xl">🎉🥳🎊🎁</p>
           <p>Great news {{user?.name}}! </p>
-          <p v-if="user.nickname">We'll call you <i class="text-green-700 font-bold">{{user.nickname}}</i>. </p>
+          <p v-if="user?.nickname">We'll call you <i class="text-green-700 font-bold">{{user.nickname}}</i>. </p>
           <p v-if="user?.alcohol==='non'">Hopefully you are doing well and if you'll change you mind about drinks - let me now. </p>
 
-          <p v-if="user?.allergy.length">I'll note down the information about you allergy and inform our chef about them!!!</p>
+          <p v-if="user?.allergy.length">I'll note down the information about your <i class="text-green-700 font-bold">{{user.allergy}}</i> allergy and inform our chef about them!!!</p>
           <p>I can't wait to see you there and dive into epic adventures!!! </p>
           <p>See you there!!!</p>
         </div>
