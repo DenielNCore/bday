@@ -1,11 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   
   // Disable SSR - SPA mode
   ssr: false,
-
+  modules:['@vueuse/nuxt'],
   app: {
     baseURL: '/',
     head: {
@@ -19,10 +19,10 @@ export default defineNuxtConfig({
   },
   
   // TypeScript configuration
-  typescript: {
-    strict: true,
-    typeCheck: true
-  },
+  // typescript: {
+  //   strict: true,
+  //   typeCheck: true
+  // },
   
   // CSS configuration
   css: ['~/assets/css/main.css'],
@@ -32,6 +32,12 @@ export default defineNuxtConfig({
     plugins: {
       '@tailwindcss/postcss': {},
       autoprefixer: {},
+    },
+  },
+
+  runtimeConfig: {
+    public: {
+      DB_URL: process.env.DB_URL,
     },
   },
 })
