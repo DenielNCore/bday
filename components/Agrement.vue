@@ -49,7 +49,7 @@ const acceptHandler = () => {
     console.log('accept');
   if(!props.user) return ;
 
-  return $pb.collection('participants').update(props.user.id, { status: 'accepted', allergy: allergy.value, time:time.value, nickname: nickname.value }).then((updated) => {
+  return $pb.collection('participants').update(props.user.id, { status: 'accepted', allergy: allergy.value, time:time.value, alcohol: alcohol.value, nickname: nickname.value }).then((updated) => {
     status.value = 'accepted';
   });
 };
