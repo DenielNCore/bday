@@ -77,7 +77,7 @@ const changeYourMindHandler = () => {
         <!-- Decorative underline -->
         <div class="hand-drawn-underline mx-auto mb-6"></div>
 
-      <template v-if="user">
+        <template v-if="user">
         <!-- Main Message -->
         <div class="text-center space-y-3 mb-8">
           <p class="hand-drawn-text text-2xl md:text-3xl text-purple-800 transform -rotate-0.5">
@@ -89,9 +89,37 @@ const changeYourMindHandler = () => {
         </div>
 
         <!-- Decorative divider -->
+
+          <Agrement :user="user" v-model:status="status" />
+
+          <div v-if="status==='declined'" class="text-center hand-drawn-border bg-pink-50 p-5 mt-10">
+            <p>It's a pity you won't be coming. 😭</p>
+
+            <p>Changed you mind?
+              <button @click="changeYourMindHandler" class="underline font-bold active:translate-y-[1px] hover:bg-green-600 rounded-md p-2">Yes!!!</button>
+            </p>
+
+
+          </div>
+
+          <div v-if="status==='accepted'" class="text-center hand-drawn-border bg-pink-50 p-5 mt-10">
+            <p class="text-2xl">🎉🥳🎊🎁</p>
+            <p>Great news {{user?.name}}! </p>
+            <p v-if="user?.nickname">We'll call you <i class="text-green-700 font-bold">{{user.nickname}}</i>. </p>
+            <p v-if="user?.alcohol==='non'">Hopefully you are doing well and if you'll change you mind about drinks - let me now. </p>
+
+            <p v-if="user?.allergy.length">I'll note down the information about your <i class="text-green-700 font-bold">{{user.allergy}}</i> allergy and inform our chef about them!!!</p>
+            <p>I can't wait to see you there and dive into epic adventures!!! </p>
+            <p>See you there!!!</p>
+          </div>
+
+        </template>
+        <div v-if="isFetchingData">Our mage is searching you invitation. Please wait...</div>
+        <div v-if="!isFetchingData && !user">We can't find your invitation. Ask our adventurer about it.</div>
+        <!-- Details Section -->
+
         <div class="hand-drawn-divider mb-6"></div>
 
-        <!-- Details Section -->
         <Details/>
         <Expectations/>
 
@@ -112,32 +140,7 @@ const changeYourMindHandler = () => {
           </p>
         </div>
 
-        <Agrement :user="user" v-model:status="status" />
 
-        <div v-if="status==='declined'" class="text-center hand-drawn-border bg-pink-50 p-5 mt-10">
-          <p>It's a pity you won't be coming. 😭</p>
-
-          <p>Changed you mind?
-            <button @click="changeYourMindHandler" class="underline font-bold active:translate-y-[1px] hover:bg-green-600 rounded-md p-2">Yes!!!</button>
-          </p>
-
-
-        </div>
-
-        <div v-if="status==='accepted'" class="text-center hand-drawn-border bg-pink-50 p-5 mt-10">
-          <p class="text-2xl">🎉🥳🎊🎁</p>
-          <p>Great news {{user?.name}}! </p>
-          <p v-if="user?.nickname">We'll call you <i class="text-green-700 font-bold">{{user.nickname}}</i>. </p>
-          <p v-if="user?.alcohol==='non'">Hopefully you are doing well and if you'll change you mind about drinks - let me now. </p>
-
-          <p v-if="user?.allergy.length">I'll note down the information about your <i class="text-green-700 font-bold">{{user.allergy}}</i> allergy and inform our chef about them!!!</p>
-          <p>I can't wait to see you there and dive into epic adventures!!! </p>
-          <p>See you there!!!</p>
-        </div>
-
-      </template>
-        <div v-if="isFetchingData">Our mage is searching you invitation. Please wait...</div>
-        <div v-if="!isFetchingData && !user">We can't find your invitation. Ask our adventurer about it.</div>
       </div>
     </div>
   </div>
